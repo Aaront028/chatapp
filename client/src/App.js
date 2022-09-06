@@ -24,13 +24,21 @@ function App() {
           <h3 className="bg-amber-400 text-3xl font-bold">Join a chat</h3>
           <input
             type="text"
+            name="name"
             placeholder="Enter your name..."
             onChange={(e) => setUsername(e.target.value)}
+            onKeyPress={(e) => {
+              e.key === 'Enter' && setUsername(e.target.value)
+            }}
           />
           <input
             type="text"
+            name="room"
             placeholder="Room ID.."
             onChange={(e) => setRoom(e.target.value)}
+            onKeyPress={(e) => {
+              e.key === 'Enter' && joinRoom()
+            }}
           />
           <button onClick={joinRoom}>Join a room</button>
         </>
