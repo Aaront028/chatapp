@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <div className="App flex flex-col justify-center items-center">
+    <div className="App flex flex-col justify-center items-center ">
       {!showChat ? (
         <>
           <h3 className="bg-amber-400 text-3xl font-bold">Join a chat</h3>

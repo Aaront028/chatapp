@@ -31,28 +31,37 @@ function Chat({ socket, username, room }) {
   }, [socket])
 
   return (
-    <div>
-      <p className="text-xl bg-amber-400">Live Chat</p>
-      <div>
-        <div className="bg-stone-50 flex flex-col ">
+    <div className="rounded">
+      <p className="text-xl bg-amber-200">Live Chat</p>
+      <div className="p-4 rounded">
+        <div className="bg-stone-50 flex flex-col rounded">
           {messageList.map((messageContent, index) => {
             return (
-              <p
+              <div
                 className={
                   username === messageContent.author
                     ? 'text-xs bg-amber-100 flex justify-end'
                     : 'text-xs bg-amber-100 flex justify-start'
                 }
-                key={index}
               >
-                {messageContent.message}
-              </p>
+                <p
+                  className={
+                    username === messageContent.author
+                      ? ' bg-green-400 rounded m-px p-1'
+                      : ' bg-cyan-400 rounded m-px p-1'
+                  }
+                  key={index}
+                >
+                  {messageContent.message}
+                </p>
+              </div>
             )
           })}
         </div>
       </div>
       <div className="chat-footer"></div>
       <input
+        className="pl-2 rounded"
         type="text"
         placeholder="Hey..."
         onChange={(e) => {
