@@ -2,6 +2,7 @@ import './index.css'
 import io from 'socket.io-client'
 import { useState } from 'react'
 import Chat from './Chat'
+import Draggable from 'react-draggable'
 
 const socket = io.connect('http://localhost:3001')
 
@@ -18,7 +19,8 @@ function App() {
   }
 
   return (
-    <div className="App flex flex-col justify-center items-center ">
+    // <Draggable>
+    <div className="App bg-amber-100 flex flex-col justify-center items-center rounded">
       {!showChat ? (
         <>
           <h3 className="bg-amber-400 text-3xl font-bold">Join a chat</h3>
@@ -46,6 +48,7 @@ function App() {
         <Chat socket={socket} username={username} room={room} />
       )}
     </div>
+    //  </Draggable>
   )
 }
 

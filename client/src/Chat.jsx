@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+// import Draggable from 'dra'
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState('')
@@ -32,7 +33,7 @@ function Chat({ socket, username, room }) {
 
   return (
     <div className="rounded">
-      <p className="text-xl bg-amber-200">Live Chat</p>
+      <p className="text-xl bg-amber-200 rounded pl-2">Live Chat</p>
       <div className="p-4 rounded">
         <div className="bg-stone-50 flex flex-col rounded">
           {messageList.map((messageContent, index) => {
@@ -40,10 +41,23 @@ function Chat({ socket, username, room }) {
               <div
                 className={
                   username === messageContent.author
-                    ? 'text-xs bg-amber-100 flex justify-end'
-                    : 'text-xs bg-amber-100 flex justify-start'
+                    ? 'text-xs bg-amber-100 flex flex-row justify-end'
+                    : 'text-xs bg-amber-100 flex  justify-start'
                 }
+                key={index}
               >
+                <p
+                  className={
+                    username === messageContent.author
+                      ? 'm-px p-1'
+                      : 'm-px p-1 '
+                  }
+                  key={index}
+                  style={{ fontSize: '8px', color: 'grey' }}
+                >
+                  {messageContent.author}
+                </p>
+
                 <p
                   className={
                     username === messageContent.author
@@ -53,6 +67,18 @@ function Chat({ socket, username, room }) {
                   key={index}
                 >
                   {messageContent.message}
+                </p>
+
+                <p
+                  className={
+                    username === messageContent.author
+                      ? '   m-px p-1'
+                      : '  m-px p-1'
+                  }
+                  key={index}
+                  style={{ fontSize: '5px', color: 'grey' }}
+                >
+                  {messageContent.time}
                 </p>
               </div>
             )
