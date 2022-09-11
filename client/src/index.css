@@ -5,3 +5,8 @@
 body {
   height: 100vh;
 }
+
+.scroll {
+  height: 400px;
+  width: 400px;
+}

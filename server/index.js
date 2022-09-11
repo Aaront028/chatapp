@@ -4,14 +4,16 @@ const path = require('path')
 const http = require('http')
 const cors = require('cors')
 const { Server } = require('socket.io')
-
+const port = process.env.PORT || 3000
 app.use(cors())
 app.use(express.static(path.join(__dirname + '/public')))
 const server = http.createServer(app)
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: 'https://azzsocketchatapp.herokuapp.com',
+    // origin: 'http://localhost:3000', //
+
     method: ['GET', 'POST'],
   },
 })
@@ -33,6 +35,6 @@ io.on('connection', (socket) => {
   })
 })
 
-server.listen(3001, () => {
-  console.log('listening to port 3001')
+server.listen(port, () => {
+  console.log('listening to port')
 })

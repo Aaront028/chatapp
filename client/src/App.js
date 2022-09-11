@@ -2,9 +2,11 @@ import './index.css'
 import io from 'socket.io-client'
 import { useState } from 'react'
 import Chat from './Chat'
-import Draggable from 'react-draggable'
+// import Draggable from 'react-draggable'
 
-const socket = io.connect('http://localhost:3001')
+// const port = process.env.PORT || 'http://localhost:3001' //trying port
+
+const socket = io.connect()
 
 function App() {
   const [username, setUsername] = useState('')
@@ -48,7 +50,7 @@ function App() {
         <Chat socket={socket} username={username} room={room} />
       )}
     </div>
-    //  </Draggable>
+    // </Draggable>
   )
 }
 
