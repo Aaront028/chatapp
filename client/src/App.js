@@ -22,34 +22,39 @@ function App() {
 
   return (
     // <Draggable>
-    <div className="App bg-amber-100 flex flex-col justify-center items-center rounded">
-      {!showChat ? (
-        <>
-          <h3 className="bg-amber-400 text-3xl font-bold">Join a chat</h3>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your name..."
-            onChange={(e) => setUsername(e.target.value)}
-            onKeyPress={(e) => {
-              e.key === 'Enter' && setUsername(e.target.value)
-            }}
-          />
-          <input
-            type="text"
-            name="room"
-            placeholder="Room ID.."
-            onChange={(e) => setRoom(e.target.value)}
-            onKeyPress={(e) => {
-              e.key === 'Enter' && joinRoom()
-            }}
-          />
-          <button onClick={joinRoom}>Join a room</button>
-        </>
-      ) : (
-        <Chat socket={socket} username={username} room={room} />
-      )}
-    </div>
+    <>
+      <h1 className="bg-amber-400 text-8xl font-bold pb-8">BEE:</h1>
+      <div className="App bg-amber-100 flex flex-col justify-center items-center rounded">
+        {!showChat ? (
+          <>
+            <h3 className="bg-amber-400 text-3xl font-bold">Join a chat</h3>
+            <input
+              className="pl-2"
+              type="text"
+              name="name"
+              placeholder="Enter your name..."
+              onChange={(e) => setUsername(e.target.value)}
+              onKeyPress={(e) => {
+                e.key === 'Enter' && setUsername(e.target.value)
+              }}
+            />
+            <input
+              className="pl-2"
+              type="text"
+              name="room"
+              placeholder="Room ID.."
+              onChange={(e) => setRoom(e.target.value)}
+              onKeyPress={(e) => {
+                e.key === 'Enter' && joinRoom()
+              }}
+            />
+            <button onClick={joinRoom}>Join a room</button>
+          </>
+        ) : (
+          <Chat socket={socket} username={username} room={room} />
+        )}
+      </div>
+    </>
     // </Draggable>
   )
 }
